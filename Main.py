@@ -2,7 +2,7 @@ import sys
 import pygame
 import Game
 
-WINDOW_SIZE = (800, 700)
+WINDOW_SIZE = (800, 550)
 
 if __name__ == '__main__':
     pygame.init()
@@ -16,6 +16,8 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                game.get_click(event.pos)
 
             screen.fill((255, 255, 255))
             game.render(screen)
