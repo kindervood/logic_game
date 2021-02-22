@@ -52,8 +52,8 @@ class Game:
         self.image_changing_btn = pygame.transform.scale(self.changing_btn, (125, 50))
         self.changing_btn_geometry = (625, 425, 100, 50)
 
-        self.level = self.load_image("level.jpg")
-        self.image_level = pygame.transform.scale(self.level, (100, 50))
+        self.lvl = self.load_image("level.jpg")
+        self.image_level = pygame.transform.scale(self.lvl, (100, 50))
         self.level_geometry = (25, 25, 115, 50)
 
         self.re = self.load_image("restart.jpg")
