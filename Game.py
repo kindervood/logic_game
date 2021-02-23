@@ -36,6 +36,7 @@ class Game:
         self.cell_width, self.cell_height = CELL_SIZE
         self.table_width, self.table_height = TABLE_SIZE
         self.left, self.top = TABLE_INDENT
+        self.still_running = True
 
         self.key_endgame = False
         self.game_started = False
@@ -50,15 +51,19 @@ class Game:
 
         self.changing_btn = self.load_image("start.jpg")
         self.image_changing_btn = pygame.transform.scale(self.changing_btn, (125, 50))
-        self.changing_btn_geometry = (625, 425, 100, 50)
+        self.changing_btn_geometry = (600, 100, 100, 50)
 
         self.lvl = self.load_image("level.jpg")
         self.image_level = pygame.transform.scale(self.lvl, (100, 50))
         self.level_geometry = (25, 25, 115, 50)
 
         self.re = self.load_image("restart.jpg")
-        self.image_restart = pygame.transform.scale(self.re, (100, 50))
-        self.re_geometry = (690, 25, 100, 50)
+        self.image_restart = pygame.transform.scale(self.re, (125, 50))
+        self.re_geometry = (600, 175, 100, 50)
+
+        self.close = self.load_image("close.jpg")
+        self.close_btn = pygame.transform.scale(self.close, (25, 25))
+        self.close_geometry = (750, 25, 25, 25)
 
         # определение цветов и таблицы нажатий
         self.colors = {
@@ -122,6 +127,9 @@ class Game:
         # отрисовка начать/проверить
         screen.blit(self.image_changing_btn, (self.changing_btn_geometry[0:2]))
 
+        # отрисовка закрыть
+        screen.blit(self.close_btn, (self.close_geometry[0:2]))
+
         # отрисовка ваш ход и стрелки для него
         screen.blit(self.text_format(self.turn_text, 20), (620, 360 - 30 * (self.turn - 1) + 15))
         screen.blit(self.image_arrow_left, (560, 360 - 30 * (self.turn - 1) + 10))
@@ -180,6 +188,10 @@ class Game:
                 self.description_text = DESCRIPTION1
             self.restart(f'Уровень сложности изменен на {self.level}')
 
+        close_btn_pressed = pygame.Rect(self.close_geometry).collidepoint(mouse_pos)
+        if close_btn_pressed:
+            self.close_game()
+
         if self.game_started:
             x, y = mouse_pos[0] - self.left, mouse_pos[1] - self.top
             # определение х-координаты клетки в зависимости от хода
@@ -217,3 +229,6 @@ class Game:
             random.shuffle(self.comp_choose)
         else:
             self.comp_choose = [int(random.randint(1, 5)) for _ in range(5)]
+
+    def close_game(self):
+        self.still_running = False
