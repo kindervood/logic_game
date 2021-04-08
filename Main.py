@@ -2,7 +2,7 @@ import sys
 import pygame
 import Game
 
-WINDOW_SIZE = (800, 550)
+WINDOW_SIZE = (850, 550)
 
 if __name__ == '__main__':
     pygame.init()

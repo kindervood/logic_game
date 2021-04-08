@@ -51,7 +51,7 @@ class Game:
 
         self.changing_btn = self.load_image("start.jpg")
         self.image_changing_btn = pygame.transform.scale(self.changing_btn, (125, 50))
-        self.changing_btn_geometry = (600, 100, 100, 50)
+        self.changing_btn_geometry = (700, 100, 100, 50)
 
         self.lvl = self.load_image("level.jpg")
         self.image_level = pygame.transform.scale(self.lvl, (100, 50))
@@ -59,11 +59,11 @@ class Game:
 
         self.re = self.load_image("restart.jpg")
         self.image_restart = pygame.transform.scale(self.re, (125, 50))
-        self.re_geometry = (600, 175, 100, 50)
+        self.re_geometry = (700, 175, 100, 50)
 
         self.close = self.load_image("close.jpg")
         self.close_btn = pygame.transform.scale(self.close, (25, 25))
-        self.close_geometry = (750, 25, 25, 25)
+        self.close_geometry = (800, 25, 25, 25)
 
         # определение цветов и таблицы нажатий
         self.colors = {
